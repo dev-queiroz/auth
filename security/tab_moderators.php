@@ -12,7 +12,7 @@ $query = "CREATE TABLE moderators (
 )";
 
 if (mysqli_query($conn, $query)) {
-    echo "Tabela admins criada com sucesso!";
+    echo "Tabela criada com sucesso!";
 } else {
-    echo "Erro ao criar tabela admins: " . mysqli_error($conn);
+    echo "Erro ao criar tabela: " . mysqli_error($conn);
 }

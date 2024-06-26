@@ -13,7 +13,7 @@
 
     <main>
         <section class="featured-products">
-            <h2 style="text-align: center; margin-block-end: revert;">Fique por Dentro das Novidades</h2>
+            <h2 style="text-align: center; margin-block-end: revert;">Fique por Dentro das Novidades na Era da Tecnologia!</h2>
             <div class="grid-container">
                 <div class="product-card">
                     <img src="images/xiaomi_note_13_pro.jpg" alt="Xiaomi Note 13 Pro">

@@ -5,16 +5,14 @@
     box-sizing: border-box;
   }
       
-  /* Body */
   body {
     font-family: 'Arial', sans-serif;
     background-color: #f0f5f9;
-    color: #000000;  /* Text color set to black */
+    color: #000000;
   }
   
-  /* Links */
   a {
-    color: #361212;
+    color: whitesmoke;
     text-decoration: none;
     transition: color 0.3s;
   }
@@ -23,7 +21,6 @@
     color: #000000;
   }
   
-  /* Header */
   header {
     background-color: #2c3e50;
     padding: 20px;
@@ -56,14 +53,12 @@
     margin-right: 20px;
   }
   
-  /* Main */
   main {
     padding: 20px;
     max-width: 1140px;
     margin: 0 auto; 
   }
   
-  /* Seções */
   section {
     margin-bottom: 40px;
   }
@@ -74,64 +69,57 @@
     margin-bottom: 20px;
   }
   
-  /* Product-Card */
   .product-card {
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 20px;
-    border-radius: 10px; /* Arredondar cantos */
-    box-shadow: 20px 20px 20px 13px rgb(0 0 0 / 27%); /* Sombra */
-    transition: box-shadow 1.0s; /* Efeito hover */
+    border-radius: 10px;
+    box-shadow: 20px 20px 20px 13px rgb(0 0 0 / 27%);
+    transition: box-shadow 1.0s;
   }
   
   .product-card:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
-  
-  /* styles.css */
 
   .product-card img {
-    width: 100%; /* Largura total */
-    height: 300px; /* Altura fixa */
-    object-fit: cover; /* Cobrir toda a área, cortando se necessário */
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
   }
-  
-  
+
   .product-card h3 {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
   }
-  
+
   .product-card p {
-    line-height: 1.6;
+    line-height: 1.0;
     margin-bottom: 15px;
   }
-  
-  /* Footer */
+
   footer {
     background-color: #2c3e50;
     color: #fff;
     padding: 10px;
     text-align: center;
   }
-  
-  /* Sobre Nós */
+
   .about-us {
     text-align: left;
   }
-  
+
   .about-us p {
     margin-bottom: 20px;
   }
-  
+
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajustar o tamanho das colunas */
-    gap: 20px; /* Espaçamento entre os cards */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
   }
   
-  /* Estilos Responsivos (Opcional) */
   @media (max-width: 768px) {
     .grid-container {
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -140,6 +128,6 @@
   
   @media (max-width: 480px) {
     .grid-container {
-      grid-template-columns: 1fr; /* Uma coluna por linha */
+      grid-template-columns: 1fr;
     }
   }

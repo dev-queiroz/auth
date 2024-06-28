@@ -11,15 +11,6 @@
         <div>
             <h1>Xiaomi Brasil</h1>
         </div>
-        <br>
-        <div class="link">
-            <nav>
-                <ul>
-                    <li><a href="register.php">Registre-se e use a Tecnologia!</a></li>
-                    <li><a href="login.php">Já é cadastrado? Login</a></li>
-                </ul>
-            </nav>
-        </div>
     </header>
 
     <main>
@@ -38,7 +29,7 @@
                 </div>
                 <div class="product-card">
                     <img src="images/smartwatch_xiaomi_amazfit.jpg" alt="Smartwatch Xiaomi Amazfit">
-                    <h3>Smartwatch Xiaomi Amazfit GTS 2 Mini</h3>
+                    <h3>Smartwatch Xiaomi Amazfit GTS 2</h3>
                     <p>Smartwatch leve e elegante com tela AMOLED, monitoramento de saúde 24/7, mais de 70 modos esportivos e bateria de até 14 dias, ideal para quem busca estilo e bem-estar.</p>
                 </div>
                 <div class="product-card">
@@ -73,6 +64,13 @@
 
     <footer>
         <p>&copy; 2024 Xiaomi Products Ltda.</p>
+        <br><br>
+        <div class="footer-admins">
+            <ul>
+                <li><a href="admin/registerAdmins.php">Registro de Administrador.</a></li>
+                <li><a href="admin/loginAdmins.php">Login de Administrador.</a></li>
+            </ul>
+        </div>
     </footer>
 </body>
 </html>

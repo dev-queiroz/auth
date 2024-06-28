@@ -11,11 +11,12 @@
     background-color: #f0f5f9;
     color: #000000;  /* Text color set to black */
   }
-
-  .link {
+  
+  /* Links */
+  a {
+    color: #361212;
     text-decoration: none;
-    color: #ddd;
-    margin-top: 20px;
+    transition: color 0.3s;
   }
 
   a:hover {

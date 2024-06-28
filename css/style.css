@@ -11,14 +11,13 @@
     background-color: #f0f5f9;
     color: #000000;  /* Text color set to black */
   }
-  
-  /* Links */
-  a {
-    color: #ff4500;
+
+  .link {
     text-decoration: none;
-    transition: color 0.3s;
+    color: #ddd;
+    margin-top: 20px;
   }
-  
+
   a:hover {
     color: #000000;
   }
@@ -106,20 +105,6 @@
   .product-card p {
     line-height: 1.6;
     margin-bottom: 15px;
-  }
-  
-  .product-card button {
-    background-color: #ff4500;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .product-card button:hover {
-    background-color: darken(#ff4500, 10%);
   }
   
   /* Footer */

@@ -4,12 +4,12 @@ require 'connect.php';
 
 $query = "CREATE TABLE products (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
-    price FLOAT(10,2) NOT NULL,
-    product_description TEXT NOT NULL,
-    product_category VARCHAR(50) NOT NULL,
-    product_image LONGBLOB(255),
-    product_stock INT NOT NULL DEFAULT 0
+    productName VARCHAR(255) NOT NULL,
+    productPrice FLOAT(10,2) NOT NULL,
+    productDescription TEXT NOT NULL,
+    productCategory VARCHAR(50) NOT NULL,
+    productImage LONGBLOB NOT NULL,
+    productStock INT NOT NULL DEFAULT 0
 );";
 
 if (mysqli_query($conn, $query)) {

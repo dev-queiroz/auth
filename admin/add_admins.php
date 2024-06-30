@@ -21,12 +21,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = "INSERT INTO admins (name, cpf, email, password) VALUES ('$name', '$cpf', '$email', '$password')";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssss", $name, $cpf, $email, $password);
-        $stmt->execute();
-        echo "<script> alert('Cadastro de administrador realizado com sucesso!'); </script>";
-        header('Location: loginAdmins.php');
+        if ($stmt->execute()) {
+          echo "<script> alert('Cadastro de administrador realizado com sucesso!'); </script>";
+          header('Location: loginAdmins.php');
+        } else {
+          echo "<script>alert('Erro ao adicionar produto: " . $stmt->error . "');</script>";
+          exit;
+        }
     } else {
         echo "<script> alert('Senha de administrador incorreta!'); </script>";
         exit;
     }
   }
 }
+
+$stmt->close();
+$conn->close();

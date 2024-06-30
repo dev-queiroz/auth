@@ -24,7 +24,7 @@
     <main>
         <section class="register">
             <h2>Login de Administrador Xiaomi</h2>
-            <form action="login.php" method="post">
+            <form action="verifyToLogin.php" method="post">
                 <div class="input-group">
                     <label for="email">E-mail:</label>
                     <input type="email" id="email" name="email" required>

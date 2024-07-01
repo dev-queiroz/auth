@@ -17,7 +17,7 @@
     <main>
         <section class="register">
             <h2>Insira os Produtos abaixo</h2>
-            <form action="add_products.php" method="post" enctype="multipart/form-data">
+            <form action="register_products.php" method="post" enctype="multipart/form-data">
                 <div class="input-group">
                     <label for="productName">Nome do Produto:</label>
                     <input type="text" id="productName" name="productName" required>
@@ -56,3 +56,42 @@
     </footer>
 </body>
 </html>
+
+<?php
+include "../security/connect.php";
+include "../security/hash.php";
+
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $productName = filter_var($_POST['productName']);
+  $productPrice = floatval($_POST['productPrice']);
+  $productDescription = filter_var($_POST['productDescription']);
+  $productCategory = filter_var($_POST['productCategory']);
+  $productImage = $_FILES['productImage'];
+  $productStock = intval($_POST['productStock']);
+  $password = filter_var($_POST['password']);
+
+  if (!password_verify($password, $insProducts)) {
+    echo "<p>Senha incorreta!</p>";
+    exit;
+  }
+
+  if ($productImage['error'] !== UPLOAD_ERR_OK) {
+    echo "<p>Erro ao enviar a imagem do produto!</p>";
+  } else {
+    $targetFile = 'uploads/' . uniqid('product_image_') . '.' . pathinfo($productImage['name'], PATHINFO_EXTENSION);
+    move_uploaded_file($productImage['tmp_name'], $targetFile);
+  }
+
+  $sql = "INSERT INTO products (productName, productPrice, productDescription, productCategory, productImage, productStock) VALUES (?, ?, ?, ?, ?, ?)";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("sdsssi", $productName, $productPrice, $productDescription, $productCategory, $targetFile, $productStock);
+  $stmt->execute();
+  $stmt->close();
+  $conn->close();
+
+  echo "<script> alert('Produto adicionado à tabela admins!'); </script>";
+}
+
+?>

@@ -19,12 +19,12 @@
                 </ul>
             </nav>
         </div>
-    </header>   
+    </header>
     
     <main>
         <section class="register">
             <h2>Login de Administrador Xiaomi</h2>
-            <form action="verifyToLogin.php" method="post">
+            <form action="loginAdmins.php" method="post">
                 <div class="input-group">
                     <label for="email">E-mail:</label>
                     <input type="email" id="email" name="email" required>
@@ -47,3 +47,53 @@
     </footer>
 </body>
 </html>
+
+<?php
+
+include "../security/connect.php";
+include "../security/hash.php";
+
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['password_admin'])) {
+    echo "<script>alert('Preencha todos os campos!');</script>";
+    exit;
+  }
+
+  if (!password_verify($_POST['password_admin'], $admins)) {
+    echo "<script>alert('Senha de administrador incorreta!');</script>";
+    exit;
+  }
+
+  $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+
+  $sql = "SELECT * FROM admins WHERE email = ?";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("s", $email);
+
+  if ($stmt->execute()) {
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+      $user_data = $result->fetch_assoc();
+
+      if (password_verify($_POST['password'], $user_data['password'])) {
+        $_SESSION['id'] = $user_data['id'];
+        header('Location: register_products.php');
+        exit;
+      } else {
+        echo "<script>alert('Senha do usuário incorreta!');</script>";
+      }
+    } else {
+      echo "<script>alert('Usuário não encontrado ou informações incorretas!');</script>";
+    }
+  } else {
+    echo "<script>alert('Erro ao conectar com o banco de dados!');</script>";
+  }
+
+  $stmt->close();
+  $conn->close();
+}
+
+?>

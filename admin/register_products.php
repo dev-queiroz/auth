@@ -73,12 +73,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $password = filter_var($_POST['password']);
 
   if (!password_verify($password, $insProducts)) {
-    echo "<p>Senha incorreta!</p>";
+    echo "<script> alert('Senha incorreta!'); </script>";
     exit;
   }
 
   if ($productImage['error'] !== UPLOAD_ERR_OK) {
-    echo "<p>Erro ao enviar a imagem do produto!</p>";
+    echo "<script> alert('Erro ao enviar a imagem do produto!'); </script>";
   } else {
     $targetFile = 'uploads/' . uniqid('product_image_') . '.' . pathinfo($productImage['name'], PATHINFO_EXTENSION);
     move_uploaded_file($productImage['tmp_name'], $targetFile);
@@ -90,15 +90,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
   if ($stmt->execute()) {
     echo "<script> alert('Produto cadastrado com sucesso!'); </script>";
-    header('Location: ../index.php');
+    header('Location: register_products.php');
   } else {
-    echo "<script> alert('Erro ao cadastrar o produto!'); </script>";
+    exit;
   }
 
   $stmt->close();
   $conn->close();
-
-  echo "<script> alert('Produto adicionado à tabela admins!'); </script>";
 }
 
 ?>

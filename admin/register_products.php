@@ -87,7 +87,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $sql = "INSERT INTO products (productName, productPrice, productDescription, productCategory, productImage, productStock) VALUES (?, ?, ?, ?, ?, ?)";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("sdsssi", $productName, $productPrice, $productDescription, $productCategory, $targetFile, $productStock);
-  $stmt->execute();
+  
+  if ($stmt->execute()) {
+    echo "<script> alert('Produto cadastrado com sucesso!'); </script>";
+    header('Location: ../index.php');
+  } else {
+    echo "<script> alert('Erro ao cadastrar o produto!'); </script>";
+  }
+
   $stmt->close();
   $conn->close();
 

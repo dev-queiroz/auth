@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
   if ($stmt->execute()) {
     echo "<script> alert('Produto cadastrado com sucesso!'); </script>";
-    header('Location: register_products.php');
+    header('Location: ../products.php');
   } else {
     exit;
   }
